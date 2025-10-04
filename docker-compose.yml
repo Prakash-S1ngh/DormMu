@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+  frontend:
+    build:
+      context: ./hoste_frontend
+      dockerfile: DockerFile
+    ports:
+      - "5173:5173"
+
+  backend:
+    build:
+      context: ./Hostel_Management_Backend
+      dockerfile: DockerFile
+    ports:
+      - "4000:4000"
+    environment:
+      - PORT=4000
+      - MONGO_URI=mongodb+srv://kunjarora23:SAwAvfQNJY1pYA2C@hostelm.jgflgpl.mongodb.net/
+      - JWT_SECRET=mysecret
+      - JWT_EXPIRATION=2h
+      - SMTP_FROM=prakashsingh1408202@gmail.com
+      - SMTP_HOST=smtp.gmail.com
+      - SMTP_PORT=587
+      - SMTP_USER=prakashsingh1408202@gmail.com
+      - SMTP_PASS="fvea sonv topb funq"  # quotes needed if password has spaces

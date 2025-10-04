@@ -1,0 +1,12 @@
+from node:18-alpine as build
+
+WORKDIR /backend
+
+COPY package.json ./  
+COPY package-lock.json ./
+
+RUN npm install
+
+COPY . .
+
+CMD ["node", "server.js"]
